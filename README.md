@@ -27,6 +27,7 @@ This repository provides a minimal Docker Compose stack to run PHP 8.3 with Ngin
 ## Project structure
 - `docker-compose.yml` — service definitions for PHP-FPM, Nginx, and MySQL.
 - `docker/php/Dockerfile` — builds the PHP 8.3 FPM image with PDO extensions.
+- `docker/nginx/Dockerfile` — builds a lightweight Nginx image that bakes in the virtual host config.
 - `docker/nginx/default.conf` — Nginx vhost that forwards PHP requests to the PHP-FPM service.
 - `src/public/index.php` — simple landing page that tests PHP and database connectivity.
 - `.gitignore` — ignores local environment files and common dependency folders.

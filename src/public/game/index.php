@@ -1,8 +1,5 @@
 <?php
 // Simple mini-game page: generate topics and write AI-like articles.
-// The game now lives under /game/, so redirect legacy requests here to the new path.
-header('Location: /game/', true, 302);
-exit;
 ?>
 <!doctype html>
 <html lang="de">

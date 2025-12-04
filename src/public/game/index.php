@@ -8,124 +8,163 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redaktions-Game</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Source+Serif+4:wght@400;600&display=swap');
+
         :root {
-            --bg: #0f172a;
-            --panel: #111827;
-            --accent: #38bdf8;
-            --text: #e5e7eb;
-            --muted: #9ca3af;
-            --success: #22c55e;
+            --bg: #f7f2ed;
+            --ink: #2c2742;
+            --muted: #6b5d7a;
+            --accent: #b18acb;
+            --accent-2: #8ac6d1;
+            --card: rgba(255, 255, 255, 0.95);
+            --border: rgba(44, 39, 66, 0.12);
+            --shadow: 0 25px 80px rgba(44, 39, 66, 0.12);
         }
+
         * { box-sizing: border-box; }
+
         body {
             margin: 0;
             min-height: 100vh;
-            background: radial-gradient(circle at 20% 20%, rgba(56, 189, 248, 0.12), transparent 25%),
-                        radial-gradient(circle at 80% 10%, rgba(34, 197, 94, 0.12), transparent 25%),
-                        linear-gradient(135deg, #0b1222, #0f172a);
-            color: var(--text);
-            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            padding: 24px;
+            background: radial-gradient(circle at 15% 20%, rgba(177, 138, 203, 0.12), transparent 25%),
+                        radial-gradient(circle at 80% 10%, rgba(138, 198, 209, 0.12), transparent 25%),
+                        linear-gradient(135deg, #fdfbf8, var(--bg));
+            color: var(--ink);
+            font-family: 'Source Serif 4', 'Georgia', serif;
+            padding: 32px 20px 40px;
         }
-        header {
+
+        .page { max-width: 1200px; margin: 0 auto; }
+
+        nav {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 12px;
+            gap: 16px;
             flex-wrap: wrap;
-            margin-bottom: 20px;
+            padding: 14px 18px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            box-shadow: var(--shadow);
         }
-        .logo {
+
+        .brand {
+            font-family: 'Playfair Display', 'Georgia', serif;
             font-size: 1.4rem;
-            font-weight: 700;
-            letter-spacing: 0.02em;
+            letter-spacing: 0.04em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
+
+        .brand span {
+            padding: 8px 12px;
+            border-radius: 12px;
+            background: linear-gradient(120deg, rgba(177, 138, 203, 0.15), rgba(138, 198, 209, 0.18));
+            border: 1px solid var(--border);
+        }
+
+        .nav-links { display: flex; gap: 12px; flex-wrap: wrap; }
+
         .nav-links a {
-            color: var(--muted);
+            color: var(--ink);
             text-decoration: none;
+            padding: 10px 14px;
+            border-radius: 12px;
+            border: 1px solid transparent;
+            transition: all 0.2s ease;
             font-weight: 600;
-            margin-left: 12px;
-            transition: color 0.2s ease;
         }
-        .nav-links a:hover { color: var(--text); }
+
+        .nav-links a:hover {
+            border-color: var(--border);
+            background: rgba(177, 138, 203, 0.08);
+        }
+
         main {
-            max-width: 1100px;
-            margin: 0 auto;
+            margin-top: 20px;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 18px;
+            gap: 16px;
         }
+
         .card {
-            background: rgba(17, 24, 39, 0.92);
-            border: 1px solid rgba(148, 163, 184, 0.15);
-            border-radius: 16px;
-            padding: 18px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
+            background: var(--card);
+            border-radius: 18px;
+            padding: 20px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
         }
-        .card h2 {
-            margin: 0 0 8px;
-            font-size: 1.2rem;
+
+        h1, h2 {
+            font-family: 'Playfair Display', 'Georgia', serif;
+            margin: 0 0 10px;
         }
-        .card p {
-            margin: 0 0 12px;
-            color: var(--muted);
-        }
+
+        p { margin: 0 0 10px; color: var(--muted); line-height: 1.7; }
+
+        .row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+
         button {
             border: none;
-            border-radius: 10px;
+            border-radius: 12px;
             padding: 10px 14px;
             font-weight: 700;
             cursor: pointer;
             transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease;
+            font-family: inherit;
         }
+
         button.primary {
-            background: linear-gradient(135deg, #38bdf8, #0ea5e9);
-            color: #0b1222;
-            box-shadow: 0 12px 30px rgba(56, 189, 248, 0.35);
+            background: linear-gradient(120deg, var(--accent), var(--accent-2));
+            color: #0f0c1f;
+            box-shadow: 0 12px 30px rgba(44, 39, 66, 0.18);
         }
+
         button.secondary {
-            background: rgba(148, 163, 184, 0.15);
-            color: var(--text);
-            border: 1px solid rgba(148, 163, 184, 0.25);
+            background: rgba(177, 138, 203, 0.12);
+            color: var(--ink);
+            border: 1px solid rgba(44, 39, 66, 0.12);
         }
+
         button:active { transform: translateY(1px); }
-        .row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+
         .pill {
             padding: 8px 12px;
-            background: rgba(56, 189, 248, 0.12);
-            border: 1px solid rgba(56, 189, 248, 0.35);
+            background: rgba(138, 198, 209, 0.16);
+            border: 1px solid rgba(138, 198, 209, 0.35);
             border-radius: 10px;
-            color: var(--text);
-            font-weight: 600;
+            color: var(--ink);
+            font-weight: 700;
             letter-spacing: 0.01em;
         }
-        .stat {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-weight: 700;
-        }
+
+        .stat { display: inline-flex; align-items: center; gap: 6px; font-weight: 700; }
         .stat small { color: var(--muted); font-weight: 600; }
+
         textarea {
             width: 100%;
             min-height: 320px;
-            background: rgba(15, 23, 42, 0.6);
-            color: var(--text);
-            border: 1px solid rgba(148, 163, 184, 0.2);
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--ink);
+            border: 1px solid rgba(44, 39, 66, 0.16);
             border-radius: 12px;
             padding: 14px;
-            font-family: 'Inter', system-ui, sans-serif;
-            font-size: 0.95rem;
-            line-height: 1.6;
+            font-family: 'Source Serif 4', 'Georgia', serif;
+            font-size: 1rem;
+            line-height: 1.7;
             resize: vertical;
             outline: none;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
         }
-        textarea:focus { border-color: rgba(56, 189, 248, 0.55); box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15); }
+
+        textarea:focus { border-color: rgba(177, 138, 203, 0.55); box-shadow: 0 0 0 3px rgba(177, 138, 203, 0.2); }
+
         .status {
-            background: rgba(34, 197, 94, 0.12);
-            border: 1px solid rgba(34, 197, 94, 0.35);
-            color: #bbf7d0;
+            background: rgba(138, 198, 209, 0.14);
+            border: 1px solid rgba(138, 198, 209, 0.3);
+            color: var(--ink);
             border-radius: 10px;
             padding: 10px 12px;
             font-weight: 600;
@@ -133,18 +172,32 @@
             align-items: center;
             gap: 8px;
         }
+
         .log {
             margin-top: 12px;
             padding: 12px;
-            background: rgba(15, 23, 42, 0.75);
-            border: 1px solid rgba(148, 163, 184, 0.2);
+            background: rgba(255, 255, 255, 0.85);
+            border: 1px solid rgba(44, 39, 66, 0.12);
             border-radius: 12px;
-            max-height: 120px;
+            max-height: 150px;
             overflow-y: auto;
-            font-size: 0.92rem;
+            font-size: 0.95rem;
         }
+
         .log-entry { margin: 0 0 8px; color: var(--muted); }
-        .log-entry strong { color: var(--text); }
+        .log-entry strong { color: var(--ink); }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(177, 138, 203, 0.14);
+            border: 1px solid rgba(177, 138, 203, 0.3);
+            padding: 8px 10px;
+            border-radius: 12px;
+            font-weight: 700;
+        }
+
         @media (max-width: 900px) {
             main { grid-template-columns: 1fr; }
             textarea { min-height: 240px; }
@@ -152,45 +205,53 @@
     </style>
 </head>
 <body>
-    <header>
-        <div class="logo">🧠 KI-Redaktion</div>
-        <div class="nav-links">
-            <a href="/">Zurück zur Startseite</a>
-        </div>
-    </header>
+    <div class="page">
+        <nav>
+            <div class="brand">
+                <span>Bridgerton Society</span>
+                <strong>Marketing-Salon</strong>
+            </div>
+            <div class="nav-links">
+                <a href="/">Startseite</a>
+                <a href="/highscore/">Highscores</a>
+            </div>
+        </nav>
 
-    <main>
-        <section class="card" id="briefing">
-            <h2>1. Thema ziehen</h2>
-            <p>Hol dir ein zufälliges Thema und lass die KI einen schnellen Artikel skizzieren. Feile bei Bedarf manuell nach.</p>
-            <div class="row" style="margin-bottom: 12px;">
-                <button class="primary" id="newTopic">Neues Thema</button>
-                <div class="pill" id="currentTopic">Noch kein Thema</div>
-            </div>
-            <div class="row" style="margin-bottom: 12px;">
-                <button class="secondary" id="generate">Artikel von KI schreiben lassen</button>
-                <span class="stat"><small>Status:</small> <span id="status">Wartet auf Thema</span></span>
-            </div>
-            <div class="row">
-                <span class="stat"><small>Budget:</small> <span id="credits">0 €</span></span>
-                <span class="stat"><small>Abgaben:</small> <span id="submissions">0</span></span>
-            </div>
-            <div class="log" id="log" aria-live="polite"></div>
-        </section>
+        <main>
+            <section class="card" id="briefing">
+                <div class="badge">🧠 KI-Redaktion</div>
+                <h1>Zieh ein Thema & lass die Feder tanzen</h1>
+                <p>Hol dir ein zufälliges Thema und lass die KI einen ersten Entwurf liefern. Du bringst die elegante Note hinein.</p>
+                <div class="row" style="margin-bottom: 12px;">
+                    <button class="primary" id="newTopic">Neues Thema</button>
+                    <div class="pill" id="currentTopic">Noch kein Thema</div>
+                </div>
+                <div class="row" style="margin-bottom: 12px;">
+                    <button class="secondary" id="generate">Artikel von KI schreiben lassen</button>
+                    <span class="stat"><small>Status:</small> <span id="status">Wartet auf Thema</span></span>
+                </div>
+                <div class="row">
+                    <span class="stat"><small>Budget:</small> <span id="credits">0 €</span></span>
+                    <span class="stat"><small>Abgaben:</small> <span id="submissions">0</span></span>
+                </div>
+                <div class="log" id="log" aria-live="polite"></div>
+            </section>
 
-        <section class="card">
-            <h2>2. Artikel überarbeiten & abgeben</h2>
-            <p>Du kannst den KI-Entwurf anpassen. Sobald du zufrieden bist, reiche den Artikel beim Redakteur ein und kassiere dein Honorar.</p>
-            <textarea id="article" placeholder="Hier landet der KI-Entwurf..."></textarea>
-            <div class="row" style="justify-content: space-between; margin-top: 10px;">
-                <small id="hint" style="color: var(--muted);">Tipp: Füge Zahlen, Zitate oder Bulletpoints hinzu, um den Artikel glaubwürdig wirken zu lassen.</small>
-                <button class="primary" id="submit">Artikel abgeben</button>
-            </div>
-            <div class="row" style="margin-top: 12px;">
-                <div class="status" id="payout">Kein Honorar erhalten</div>
-            </div>
-        </section>
-    </main>
+            <section class="card">
+                <div class="badge">✒️ Redaktion</div>
+                <h2>Artikel überarbeiten & abgeben</h2>
+                <p>Du kannst den KI-Entwurf anpassen. Sobald du zufrieden bist, reiche den Artikel beim Redakteur ein und kassiere dein Honorar.</p>
+                <textarea id="article" placeholder="Hier landet der KI-Entwurf..."></textarea>
+                <div class="row" style="justify-content: space-between; margin-top: 10px;">
+                    <small id="hint" style="color: var(--muted);">Tipp: Füge Zahlen, Zitate oder Bulletpoints hinzu, um den Artikel glaubwürdig wirken zu lassen.</small>
+                    <button class="primary" id="submit">Artikel abgeben</button>
+                </div>
+                <div class="row" style="margin-top: 12px;">
+                    <div class="status" id="payout">Kein Honorar erhalten</div>
+                </div>
+            </section>
+        </main>
+    </div>
 
     <script>
         const topics = [

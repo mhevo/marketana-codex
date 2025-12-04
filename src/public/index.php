@@ -77,14 +77,6 @@ try {
             font-size: 0.9rem;
             color: #475569;
         }
-        footer a {
-            color: #0284c7;
-            text-decoration: none;
-            font-weight: 600;
-        }
-        footer a:hover {
-            text-decoration: underline;
-        }
     </style>
 </head>
 <body>
@@ -103,8 +95,7 @@ try {
             <li><strong>3.</strong> Wiederhole den Prozess und sichere dir immer höhere Entlohnungen.</li>
         </ul>
         <footer>
-            <strong>Systemstatus:</strong> MySQL ist <?php echo escape($pdoMessage); ?>.<br />
-            <a href="/highscore/">Highscore-Liste ansehen</a>
+            <strong>Systemstatus:</strong> MySQL ist <?php echo htmlspecialchars($pdoMessage, ENT_QUOTES, 'UTF-8'); ?>.
         </footer>
     </main>
 </body>

@@ -118,7 +118,7 @@ try {
             <li><strong>3.</strong> Wiederhole den Prozess und sichere dir immer höhere Entlohnungen.</li>
         </ul>
         <div class="actions">
-            <a class="button" href="/game">Zum Spiel starten 🚀</a>
+            <a class="button" href="/game/">Zum Spiel starten 🚀</a>
         </div>
         <footer>
             <strong>Systemstatus:</strong> MySQL ist <?php echo htmlspecialchars($pdoMessage, ENT_QUOTES, 'UTF-8'); ?>.

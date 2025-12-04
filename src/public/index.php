@@ -5,8 +5,9 @@ require_once __DIR__ . '/bootstrap.php';
 $pdoMessage = 'not connected';
 try {
     $pdo = createPdo();
-    $stmt = $pdo->query('SELECT NOW() as current_time');
-    $time = $stmt->fetch(PDO::FETCH_ASSOC)['current_time'] ?? 'unknown';
+    // Use a neutral alias to avoid conflicts with reserved keywords across MySQL versions
+    $stmt = $pdo->query('SELECT NOW() as current_time_value');
+    $time = $stmt->fetch(PDO::FETCH_ASSOC)['current_time_value'] ?? 'unknown';
     $pdoMessage = 'connected (time: ' . $time . ')';
 } catch (Throwable $e) {
     $pdoMessage = 'connection failed: ' . $e->getMessage();

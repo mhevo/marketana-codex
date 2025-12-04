@@ -27,5 +27,6 @@ try {
     <h1>PHP 8.3 with Nginx</h1>
     <p>MySQL status: <?php echo htmlspecialchars($pdoMessage, ENT_QUOTES, 'UTF-8'); ?></p>
     <p>PHP version: <?php echo phpversion(); ?></p>
+    <p><a href="/highscore/">View minigame highscores</a></p>
 </body>
 </html>

@@ -72,6 +72,28 @@ try {
             font-size: 0.9rem;
             font-weight: 600;
         }
+        .actions {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: flex-start;
+        }
+        .button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.85rem 1.4rem;
+            background: linear-gradient(120deg, #0ea5e9, #2563eb);
+            color: white;
+            text-decoration: none;
+            border-radius: 999px;
+            font-weight: 700;
+            box-shadow: 0 12px 30px rgba(37, 99, 235, 0.25);
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+        .button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 16px 32px rgba(37, 99, 235, 0.3);
+        }
         footer {
             margin-top: 2rem;
             font-size: 0.9rem;
@@ -94,6 +116,9 @@ try {
             <li><strong>2.</strong> Präsentiere die Ergebnisse deinem Chef und sammle seine Anerkennung.</li>
             <li><strong>3.</strong> Wiederhole den Prozess und sichere dir immer höhere Entlohnungen.</li>
         </ul>
+        <div class="actions">
+            <a class="button" href="/game">Zum Spiel starten 🚀</a>
+        </div>
         <footer>
             <strong>Systemstatus:</strong> MySQL ist <?php echo htmlspecialchars($pdoMessage, ENT_QUOTES, 'UTF-8'); ?>.
         </footer>
